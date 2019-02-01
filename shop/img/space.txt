@@ -1,0 +1,29 @@
+Add items -->
+OnePlus 6T , img/OnePlus 6T.jpg , 37999
+Echo Dot , img/EchoDot2999.jpg , 2999
+Samsung 108cm , img/Samsung108cm29990.jpg , 29990
+SanDisk 256GB , img/SanDisk256.jpg ,14,404
+
+---------------------------------------------------------------------------------------------------------------------
+Update items -->
+
+
+---------------------------------------------------------------------------------------------------------------------
+Delete items -->
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+SELECT customer_name, contact_no, (sum(quantity*price)) as money_spent, date_joined FROM customer, shopdata GROUP BY(contact_no) ORDER BY(money_spent) DESC;
+
+SELECT c.customer_name, c.contact_no, (sum(s.quantity*s.price)) as money_spent, c.date_joined FROM customer c, shopdata s GROUP BY(customer_no) ORDER BY(money_spent) DESC;
+
+select customer_name, contact_no, date_joined from customer;
+
+join
+
+select customer_no, sum( quantity*price ) as money_spent from shopdata group by customer_no order by money_spent DESC;
+
+wow sql---->>
+select t2.customer_name, t2.contact_no, t1.money_spent, t2.date_joined from ( select customer_no, sum( quantity*price ) as money_spent from shopdata group by customer_no order by money_spent DESC ) t1 inner join ( select customer_name, contact_no, date_joined from customer ) t2 on ( t1.customer_no = t2.contact_no );
